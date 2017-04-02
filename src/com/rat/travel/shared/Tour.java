@@ -6,7 +6,25 @@ public class Tour implements IsSerializable{
 	
 	private Integer id;
 	private String name;
+	private Integer countryId;
+	private Country country;
 	
+	public Country getCountry() {
+		return country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
+	}
+
+	public Integer getCountryId() {
+		return countryId;
+	}
+
+	public void setCountryId(Integer countryId) {
+		this.countryId = countryId;
+	}
+
 	public Tour() {
 		super();
 	}
@@ -14,6 +32,13 @@ public class Tour implements IsSerializable{
 	public Tour(Integer id, String name) {
 		this.id = id;
 		this.name = name;
+	}
+
+	public Tour(Integer id, String name, Integer countryId) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.countryId = countryId;
 	}
 
 	public Integer getId() {

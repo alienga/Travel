@@ -7,12 +7,14 @@
 <resultMap type="com.rat.travel.shared.Tour" id="TourMap">
    <result column="ID" property="id" />
    <result column="NAME" property="name" />
+   <result column="COUNTRY_ID" property="countryId" />
 </resultMap>  
 
 
 <select id="getToursList" resultMap="TourMap">
 SELECT ID,
-       NAME
+       NAME,
+       COUNTRY_ID
   FROM TOUR
  ORDER BY ID                
 </select>

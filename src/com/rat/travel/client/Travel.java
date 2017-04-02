@@ -1,15 +1,20 @@
 package com.rat.travel.client;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+import com.google.gwt.cell.client.Cell;
+import com.google.gwt.cell.client.TextCell;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.cellview.client.CellTable;
+import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.rat.travel.shared.Country;
 import com.rat.travel.shared.Tour;
 
 /**
@@ -17,23 +22,18 @@ import com.rat.travel.shared.Tour;
  */
 public class Travel implements EntryPoint {
 	/**
-	 * The message displayed to the user when the server cannot be reached or
-	 * returns an error.
-	 */
-	private static final String SERVER_ERROR = "An error occurred while "
-			+ "attempting to contact the server. Please check your network "
-			+ "connection and try again.";
-
-	/**
 	 * Create a remote service proxy to talk to the server-side Travel service.
 	 */
 	private final TravelServiceAsync travelService = GWT
 			.create(TravelService.class);
+	
+	public String countryName = "000000000";
 
 	/**
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {	
+		
 	    final CellTable<Tour> dataTable = new CellTable<Tour>();
 	      
 	    TextColumn<Tour> idColumn = new TextColumn<Tour>() {
@@ -51,8 +51,20 @@ public class Travel implements EntryPoint {
 				return object.getName();
 			}
 	    };
+	    
+	   
+	    TextColumn<Tour> countryColumn = new TextColumn<Tour>() {
+			
+			@Override
+			public String getValue(Tour object) {
+				return String.valueOf(object.getCountry().getName());
+			}
+	    };
+	   
+	    
 	    dataTable.addColumn(idColumn);
 	    dataTable.addColumn(nameColumn);
+	    dataTable.addColumn(countryColumn);
 	    
 	    travelService.getToursList(new AsyncCallback<List<Tour>>() {
 			

@@ -3,6 +3,7 @@ package com.rat.travel.client;
 import java.util.List;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.rat.travel.shared.Country;
 import com.rat.travel.shared.Tour;
 
 /**
@@ -11,4 +12,5 @@ import com.rat.travel.shared.Tour;
 public interface TravelServiceAsync {
 
 	void getToursList(AsyncCallback< List<Tour>> callback);
+	void getCountryById(int id, AsyncCallback< Country> callback);
 }

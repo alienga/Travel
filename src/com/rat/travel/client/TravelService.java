@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import com.rat.travel.shared.Country;
 import com.rat.travel.shared.Tour;
 
 /**
@@ -13,4 +14,5 @@ import com.rat.travel.shared.Tour;
 public interface TravelService extends RemoteService {
 
 	public List<Tour> getToursList();
+	public Country getCountryById(int id);
 }
