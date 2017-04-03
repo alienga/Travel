@@ -2,6 +2,7 @@ package com.rat.travel.server;
 
 import java.util.List;
 
+import com.rat.travel.shared.DictionaryCacheData;
 import com.rat.travel.client.TravelService;
 import com.rat.travel.shared.Country;
 import com.rat.travel.shared.Tour;
@@ -26,5 +27,11 @@ public class TravelServiceImpl extends RemoteServiceServlet implements
 	public List<Country> getCountriesList()
 	{
 		return Server.getDb().getCountriesList();
+	}
+
+	public DictionaryCacheData loadDictionaryCache() {
+		DictionaryCacheData dictionaryCacheData  = new DictionaryCacheData();
+		dictionaryCacheData.setCountriesList(Server.getDb().getCountriesList());
+		return dictionaryCacheData;
 	}
 }

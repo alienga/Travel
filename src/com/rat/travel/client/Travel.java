@@ -12,6 +12,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.rat.travel.client.gui.MainPanel;
 import com.rat.travel.client.gui.TourTable;
 import com.rat.travel.shared.Country;
+import com.rat.travel.shared.DictionaryCacheData;
 import com.rat.travel.shared.Tour;
 
 /**
@@ -24,12 +25,7 @@ public class Travel implements EntryPoint {
 	private final TravelServiceAsync travelService = GWT
 			.create(TravelService.class);
 	
-	private static HashMap<Integer, Country> countriesHashMap;
 	
-
-	public static HashMap<Integer, Country> getCountriesHashMap() {
-		return countriesHashMap;
-	}
 
 
 	/**
@@ -37,20 +33,16 @@ public class Travel implements EntryPoint {
 	 */
 	public void onModuleLoad() {	
 		final MainPanel mainPanel = new MainPanel();
-		countriesHashMap = new HashMap<Integer, Country>();  
-	    travelService.getCountriesList(new AsyncCallback<List<Country>>() {
+		
+	    travelService.loadDictionaryCache(new AsyncCallback<DictionaryCacheData>() {
 
 			public void onFailure(Throwable caught) {
 				   RootPanel.get().add(new Label("This is travel application. error"));
 				
 			}
 
-			public void onSuccess(List<Country> result) {
-				
-				countriesHashMap = new HashMap<Integer, Country>();
-				for (Country country : result) {
-					countriesHashMap.put(country.getId(), country);
-				}
+			public void onSuccess(DictionaryCacheData result) {
+				ClientDictionaryCache.init(result);
 				
 				 travelService.getToursList(new AsyncCallback<List<Tour>>() {
 						
@@ -64,7 +56,6 @@ public class Travel implements EntryPoint {
 							
 						}
 					});
-				
 			}
 		});
         
