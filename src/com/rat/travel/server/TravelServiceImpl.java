@@ -22,4 +22,9 @@ public class TravelServiceImpl extends RemoteServiceServlet implements
 	public Country getCountryById(int id){
 		return Server.getDb().getCountryById(id);
 	}
+	
+	public List<Country> getCountriesList()
+	{
+		return Server.getDb().getCountriesList();
+	}
 }

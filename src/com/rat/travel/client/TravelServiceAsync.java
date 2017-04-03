@@ -13,4 +13,5 @@ public interface TravelServiceAsync {
 
 	void getToursList(AsyncCallback< List<Tour>> callback);
 	void getCountryById(int id, AsyncCallback< Country> callback);
+	void getCountriesList(AsyncCallback<List<Country>>callback);
 }

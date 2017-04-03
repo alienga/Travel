@@ -31,4 +31,9 @@ public class DB implements DBInterface{
     	return countryMapper.getCountryById(id);
     }
     
+    public List<Country> getCountriesList()
+    {
+    	return countryMapper.getCountriesList();
+    }
+    
 }

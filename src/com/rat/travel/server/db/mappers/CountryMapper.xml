@@ -17,4 +17,11 @@ SELECT ID,
  WHERE ID=#{id}               
 </select>
 
+<select id="getCountriesList" resultMap="CountryMap">
+SELECT ID,
+       NAME
+  FROM COUNTRY
+  ORDER BY ID              
+</select>
+
 </mapper>

@@ -9,4 +9,6 @@ public interface DBInterface {
     public List<Tour> getToursList();
     
     public Country getCountryById(int id);
+    
+    public List<Country> getCountriesList();
 }
