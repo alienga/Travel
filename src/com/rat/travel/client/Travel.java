@@ -9,6 +9,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.rat.travel.client.gui.MainPanel;
 import com.rat.travel.client.gui.TourTable;
 import com.rat.travel.shared.Country;
 import com.rat.travel.shared.Tour;
@@ -31,16 +32,11 @@ public class Travel implements EntryPoint {
 	}
 
 
-	public void setCountriesHashMap(HashMap<Integer, Country> countriesHashMap) {
-		this.countriesHashMap = countriesHashMap;
-	}
-
-
 	/**
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {	
-		final TourTable tourTable = new TourTable();
+		final MainPanel mainPanel = new MainPanel();
 		countriesHashMap = new HashMap<Integer, Country>();  
 	    travelService.getCountriesList(new AsyncCallback<List<Country>>() {
 
@@ -60,7 +56,7 @@ public class Travel implements EntryPoint {
 						
 						public void onSuccess(List<Tour> result) {
 							
-							tourTable.setData(result);
+							mainPanel.setData(result);
 						}
 						
 						public void onFailure(Throwable caught) {
@@ -71,10 +67,7 @@ public class Travel implements EntryPoint {
 				
 			}
 		});
-      
-	    HorizontalPanel mainPanel = new HorizontalPanel();
-	    mainPanel.add(tourTable);
-	    
+        
 	    RootPanel.get().add(mainPanel);
 	}
 }
