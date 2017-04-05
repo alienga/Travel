@@ -10,6 +10,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.rat.travel.client.gui.MainPanel;
+import com.rat.travel.client.gui.TourDetails;
 import com.rat.travel.client.gui.TourTable;
 import com.rat.travel.shared.Country;
 import com.rat.travel.shared.DictionaryCacheData;
@@ -60,5 +61,6 @@ public class Travel implements EntryPoint {
 		});
         
 	    RootPanel.get().add(mainPanel);
+	    
 	}
 }

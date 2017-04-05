@@ -3,6 +3,7 @@ package com.rat.travel.client;
 import java.util.List;
 
 
+
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.rat.travel.shared.Country;
 import com.rat.travel.shared.DictionaryCacheData;
@@ -17,4 +18,5 @@ public interface TravelServiceAsync {
 	void getCountryById(int id, AsyncCallback< Country> callback);
 	void getCountriesList(AsyncCallback<List<Country>>callback);
 	void loadDictionaryCache(AsyncCallback<DictionaryCacheData> callback);
+	void updateTour(int id, String name, AsyncCallback<Void> callback);
 }

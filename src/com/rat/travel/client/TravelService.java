@@ -4,6 +4,7 @@ import java.util.List;
 
 
 
+
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
@@ -21,4 +22,5 @@ public interface TravelService extends RemoteService {
 	public Country getCountryById(int id);
 	public List<Country> getCountriesList();
 	public DictionaryCacheData loadDictionaryCache();
+	public void updateTour(int id, String name);
 }

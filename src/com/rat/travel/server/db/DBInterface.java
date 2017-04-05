@@ -11,4 +11,6 @@ public interface DBInterface {
     public Country getCountryById(int id);
     
     public List<Country> getCountriesList();
+    
+    public void updateTour(int id, String name);
 }

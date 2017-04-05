@@ -19,10 +19,7 @@ public class DB implements DBInterface{
     
     public List<Tour> getToursList() {
     	
-    	List<Tour> tours = tourMapper.getToursList(); 
-    	for (Tour tour : tours) {
-			tour.setCountry(getCountryById(tour.getCountryId()));
-		}
+    	List<Tour> tours = tourMapper.getToursList();
         return tours;
     }
     
@@ -34,6 +31,11 @@ public class DB implements DBInterface{
     public List<Country> getCountriesList()
     {
     	return countryMapper.getCountriesList();
+    }
+    
+    public void updateTour(int id, String name)
+    {
+    	tourMapper.updateTour(id, name);
     }
     
 }

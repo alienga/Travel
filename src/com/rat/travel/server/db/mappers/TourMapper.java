@@ -6,5 +6,6 @@ import com.rat.travel.shared.Tour;
 
 public interface TourMapper {
 	public List<Tour> getToursList();
+	public void updateTour(int id, String name);
 
 }
