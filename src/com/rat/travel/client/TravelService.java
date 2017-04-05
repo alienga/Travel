@@ -23,4 +23,5 @@ public interface TravelService extends RemoteService {
 	public List<Country> getCountriesList();
 	public DictionaryCacheData loadDictionaryCache();
 	public void updateTour(int id, String name);
+	public Tour getTourById(int id);
 }

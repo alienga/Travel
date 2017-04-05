@@ -19,6 +19,14 @@ SELECT ID,
  ORDER BY ID                
 </select>
 
+<select id="getTourById" resultMap="TourMap" parameterType="int">
+SELECT ID,
+       NAME,
+       COUNTRY_ID
+  FROM TOUR 
+  WHERE ID=#{id}     
+</select>
+
 <update id="updateTour">
 UPDATE TOUR
    SET NAME= #{param2}

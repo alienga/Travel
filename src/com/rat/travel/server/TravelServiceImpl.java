@@ -38,4 +38,9 @@ public class TravelServiceImpl extends RemoteServiceServlet implements
 	public void updateTour(int id, String name) {
 		Server.getDb().updateTour(id, name);
 	}
+	
+	public Tour getTourById(int id)
+	{
+		return Server.getDb().getTourById(id);
+	}
 }

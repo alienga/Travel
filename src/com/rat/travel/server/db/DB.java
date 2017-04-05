@@ -38,4 +38,9 @@ public class DB implements DBInterface{
     	tourMapper.updateTour(id, name);
     }
     
+    public Tour getTourById(int id)
+    {
+    	return tourMapper.getTourById(id);
+    }
+    
 }
