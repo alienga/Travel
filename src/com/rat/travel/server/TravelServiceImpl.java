@@ -35,8 +35,8 @@ public class TravelServiceImpl extends RemoteServiceServlet implements
 		return dictionaryCacheData;
 	}
 
-	public void updateTour(int id, String name) {
-		Server.getDb().updateTour(id, name);
+	public void updateTour(Tour tour) {
+		Server.getDb().updateTour(tour);
 	}
 	
 	public Tour getTourById(int id)

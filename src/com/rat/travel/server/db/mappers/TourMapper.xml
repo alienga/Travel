@@ -27,10 +27,16 @@ SELECT ID,
   WHERE ID=#{id}     
 </select>
 
-<update id="updateTour">
+<update id="updateTour111">
 UPDATE TOUR
-   SET NAME= #{param2}
- WHERE ID=#{param1}   
+   SET NAME= #{name}
+ WHERE ID=#{id}   
+</update>
+
+<update id="updateTour" parameterType="com.rat.travel.shared.Tour">
+UPDATE TOUR
+   SET NAME= #{name}
+ WHERE ID=#{id}   
 </update>
 
 </mapper>

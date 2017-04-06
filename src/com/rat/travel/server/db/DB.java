@@ -33,9 +33,9 @@ public class DB implements DBInterface{
     	return countryMapper.getCountriesList();
     }
     
-    public void updateTour(int id, String name)
+    public void updateTour(Tour tour)
     {
-    	tourMapper.updateTour(id, name);
+    	tourMapper.updateTour(tour);
     }
     
     public Tour getTourById(int id)

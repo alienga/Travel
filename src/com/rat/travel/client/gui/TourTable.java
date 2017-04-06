@@ -2,6 +2,8 @@ package com.rat.travel.client.gui;
 
 import java.util.List;
 
+import javax.smartcardio.CommandAPDU;
+
 import org.eclipse.jetty.io.nio.SelectorManager.SelectSet;
 
 import com.google.gwt.cell.client.ButtonCell;
@@ -12,6 +14,7 @@ import com.google.gwt.event.dom.client.DoubleClickHandler;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.TextColumn;
+import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
@@ -30,10 +33,11 @@ public class TourTable extends Composite{
 	private final TravelServiceAsync travelService = GWT
 			.create(TravelService.class);
 	
+	private PopupPanel tourDetailsPopup = new PopupPanel(true);
 	private CellTable<Tour> dataTable = new CellTable<Tour>();
      Integer selectedTourId = -1;
 	
-	public TourTable()
+	public TourTable(final Command refreshCommand)
 	{     
 	    TextColumn<Tour> idColumn = new TextColumn<Tour>() {
 			
@@ -83,7 +87,7 @@ public class TourTable extends Composite{
 	    dataTable.addDomHandler(new DoubleClickHandler() {
 
 	            public void onDoubleClick(final DoubleClickEvent event) {
-	            	final PopupPanel tourDetailsPopup = new PopupPanel(true);
+	            	
 	            	travelService.getTourById(selectedTourId, new AsyncCallback<Tour>() {
 
 						public void onFailure(Throwable caught) {
@@ -92,10 +96,16 @@ public class TourTable extends Composite{
 						}
 
 						public void onSuccess(Tour result) {
-							TourDetails tourDetails = new TourDetails(result);
+							Command closeCommand = new Command(){
+
+								public void execute() {									
+									tourDetailsPopup.hide();
+									tourDetailsPopup.clear();
+									refreshCommand.execute();
+								}};
+							TourDetails tourDetails = new TourDetails(result, closeCommand);
 			            	tourDetailsPopup.add(tourDetails);
 			            	tourDetailsPopup.center();
-							
 						}
 					});
 	            	

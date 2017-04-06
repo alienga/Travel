@@ -12,7 +12,7 @@ public interface DBInterface {
     
     public List<Country> getCountriesList();
     
-    public void updateTour(int id, String name);
+    public void updateTour(Tour tour);
     
     public Tour getTourById(int id);
 }

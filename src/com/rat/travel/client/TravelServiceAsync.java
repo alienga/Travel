@@ -18,6 +18,6 @@ public interface TravelServiceAsync {
 	void getCountryById(int id, AsyncCallback< Country> callback);
 	void getCountriesList(AsyncCallback<List<Country>>callback);
 	void loadDictionaryCache(AsyncCallback<DictionaryCacheData> callback);
-	void updateTour(int id, String name, AsyncCallback<Void> callback);
+	void updateTour(Tour tour, AsyncCallback<Void> callback);
 	void getTourById(int id, AsyncCallback<Tour> callback);
 }

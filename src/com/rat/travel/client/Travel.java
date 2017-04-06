@@ -23,10 +23,15 @@ public class Travel implements EntryPoint {
 	/**
 	 * Create a remote service proxy to talk to the server-side Travel service.
 	 */
-	private final TravelServiceAsync travelService = GWT
+	private static final TravelServiceAsync travelService = GWT
 			.create(TravelService.class);
 	
-	
+
+	public static TravelServiceAsync getTravelservice() {
+		return travelService;
+	}
+
+
 
 
 	/**
@@ -44,19 +49,8 @@ public class Travel implements EntryPoint {
 
 			public void onSuccess(DictionaryCacheData result) {
 				ClientDictionaryCache.init(result);
+				mainPanel.loadData();
 				
-				 travelService.getToursList(new AsyncCallback<List<Tour>>() {
-						
-						public void onSuccess(List<Tour> result) {
-							
-							mainPanel.setData(result);
-						}
-						
-						public void onFailure(Throwable caught) {
-							 RootPanel.get().add(new Label("This is travel application. error"));
-							
-						}
-					});
 			}
 		});
         
