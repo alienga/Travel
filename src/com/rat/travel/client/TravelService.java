@@ -25,4 +25,5 @@ public interface TravelService extends RemoteService {
 	public void updateTour(Tour tour);
 	public Tour getTourById(int id);
 	public Tour createTour(Tour tour);
+	public void deleteTour(int id);
 }

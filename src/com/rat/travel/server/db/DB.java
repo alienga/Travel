@@ -49,4 +49,9 @@ public class DB implements DBInterface{
     	return tour;
     }
     
+    public void deleteTour(int id)
+    {
+    	tourMapper.deleteTour(id);
+    }
+    
 }

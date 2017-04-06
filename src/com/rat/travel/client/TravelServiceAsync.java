@@ -21,4 +21,5 @@ public interface TravelServiceAsync {
 	void updateTour(Tour tour, AsyncCallback<Void> callback);
 	void getTourById(int id, AsyncCallback<Tour> callback);
 	void createTour(Tour tour, AsyncCallback<Tour> callback);
+	void deleteTour(int id, AsyncCallback<Void> callback);
 }

@@ -17,4 +17,6 @@ public interface DBInterface {
     public Tour getTourById(int id);
     
     public Tour createTour(Tour tour);
+    
+    public void deleteTour(int id);
 }

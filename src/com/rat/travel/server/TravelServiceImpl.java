@@ -49,4 +49,9 @@ public class TravelServiceImpl extends RemoteServiceServlet implements
 		Server.getDb().createTour(tour);
 		return tour;
 	}
+	
+	public void deleteTour(int id)
+	{
+		Server.getDb().deleteTour(id);
+	}
 }

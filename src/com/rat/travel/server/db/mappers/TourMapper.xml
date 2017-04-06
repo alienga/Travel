@@ -38,4 +38,8 @@ INSERT INTO TOUR (ID, NAME)
 VALUES (nextval('tour_id_seq'), #{name})
 </insert>
 
+<delete id="deleteTour" parameterType="int">
+DELETE FROM TOUR WHERE ID=#{id}
+</delete>
+
 </mapper>

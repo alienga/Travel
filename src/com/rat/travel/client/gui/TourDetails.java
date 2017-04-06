@@ -96,6 +96,37 @@ public class TourDetails extends Composite {
 							});
 				}
 			});
+			
+			Button deleteButton = new Button("Delete", new ClickHandler() {
+				
+				public void onClick(ClickEvent event) {
+					Travel.getTravelservice().deleteTour(t.getId(), new AsyncCallback<Void>() {
+
+						public void onFailure(Throwable caught) {
+							
+							RootPanel
+							.get()
+							.add(new Label(
+									"This is travel application. error"));
+							
+						}
+
+						public void onSuccess(Void result) {
+							RootPanel
+							.get()
+							.add(new Label(
+									"onSuccess"));
+							if (closeCommand != null) {
+								
+								closeCommand.execute();
+							}
+							
+						}
+					});
+					
+				}
+			});
+			mainWidget.add(deleteButton);
 			setData(tour);
 		}
 
