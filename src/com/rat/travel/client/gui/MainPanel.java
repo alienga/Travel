@@ -2,12 +2,15 @@ package com.rat.travel.client.gui;
 
 import java.util.List;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.rat.travel.client.Travel;
@@ -17,9 +20,10 @@ public class MainPanel extends Composite {
 
 	private VerticalPanel mainWidget = new VerticalPanel();
 	private TourTable tourTable;
+	private PopupPanel tourCreatePopup = new PopupPanel(true);
 
 	public MainPanel() {
-		Command refreshCommand = new Command() {
+		final Command refreshCommand = new Command() {
 			
 			public void execute() {
 				loadData();
@@ -29,7 +33,23 @@ public class MainPanel extends Composite {
 		tourTable = new TourTable(refreshCommand);
 		
 		HorizontalPanel buttonPanel = new HorizontalPanel();
-		buttonPanel.add(new Button("Добавить"));
+		Button addBtn = new Button("Добавить", new ClickHandler() {
+			
+			public void onClick(ClickEvent event) {
+				
+				Command closeCommand = new Command(){
+
+					public void execute() {									
+						tourCreatePopup.hide();
+						tourCreatePopup.clear();
+						refreshCommand.execute();
+					}};
+				TourDetails tourDetails = new TourDetails(null, closeCommand);
+				tourCreatePopup.add(tourDetails);
+				tourCreatePopup.center();
+			}
+		});
+		buttonPanel.add(addBtn);
 		buttonPanel.add(new Button("Удалить"));
 
 		mainWidget.add(tourTable);

@@ -33,7 +33,7 @@ public class TourTable extends Composite{
 	private final TravelServiceAsync travelService = GWT
 			.create(TravelService.class);
 	
-	private PopupPanel tourDetailsPopup = new PopupPanel(true);
+	private PopupPanel tourDetailsPopup = new PopupPanel();
 	private CellTable<Tour> dataTable = new CellTable<Tour>();
      Integer selectedTourId = -1;
 	

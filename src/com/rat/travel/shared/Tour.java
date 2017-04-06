@@ -57,4 +57,14 @@ public class Tour implements IsSerializable{
 		this.name = name;
 	}
 	
+	public String toString()
+	{
+		StringBuilder s = new StringBuilder();
+		s.append("id=");
+		if (id!=null) s.append(id +"; ");
+		else  s.append("null; ");
+		s.append("name=" + name + "; ");
+		return s.toString();
+	}
+	
 }

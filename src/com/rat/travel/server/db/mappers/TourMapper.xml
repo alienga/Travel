@@ -27,16 +27,15 @@ SELECT ID,
   WHERE ID=#{id}     
 </select>
 
-<update id="updateTour111">
-UPDATE TOUR
-   SET NAME= #{name}
- WHERE ID=#{id}   
-</update>
-
 <update id="updateTour" parameterType="com.rat.travel.shared.Tour">
 UPDATE TOUR
    SET NAME= #{name}
  WHERE ID=#{id}   
 </update>
+
+<insert id="createTour" parameterType="com.rat.travel.shared.Tour">
+INSERT INTO TOUR (ID, NAME)
+VALUES (nextval('tour_id_seq'), #{name})
+</insert>
 
 </mapper>

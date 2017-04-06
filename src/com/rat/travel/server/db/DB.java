@@ -43,4 +43,10 @@ public class DB implements DBInterface{
     	return tourMapper.getTourById(id);
     }
     
+    public Tour createTour(Tour tour)
+    {
+    	tourMapper.createTour(tour);
+    	return tour;
+    }
+    
 }

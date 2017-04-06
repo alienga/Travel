@@ -12,5 +12,6 @@ public interface TourMapper {
 	//public void updateTour(@Param("id") int id, @Param("name") String name);
 	public void updateTour(Tour tour);
 	public Tour getTourById(int id);
+	public Tour createTour(Tour tour);
 
 }

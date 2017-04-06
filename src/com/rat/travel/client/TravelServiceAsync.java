@@ -20,4 +20,5 @@ public interface TravelServiceAsync {
 	void loadDictionaryCache(AsyncCallback<DictionaryCacheData> callback);
 	void updateTour(Tour tour, AsyncCallback<Void> callback);
 	void getTourById(int id, AsyncCallback<Tour> callback);
+	void createTour(Tour tour, AsyncCallback<Tour> callback);
 }
